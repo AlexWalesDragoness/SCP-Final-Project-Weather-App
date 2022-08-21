@@ -47,7 +47,7 @@ function formatDate(timestamp) {
       `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
     );
 
-    iconElement.setAttribute("Alt", `${response.data.weather[0]).description}`);
+    iconElement.setAttribute("Alt", `${response.data.weather[0].description}`);
   }
 
   let apiKey = "cc19da36ddd36220c1e743c979d7284e";
