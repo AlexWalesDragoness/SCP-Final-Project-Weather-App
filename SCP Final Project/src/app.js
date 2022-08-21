@@ -48,11 +48,51 @@ function formatDate(timestamp) {
     );
 
     iconElement.setAttribute("Alt", `${response.data.weather[0].description}`);
+
+    celciusTemperature = response.data.main.temp;
+
   }
 
-  let apiKey = "cc19da36ddd36220c1e743c979d7284e";
-  let city = London;
-  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?q=${city}&appid=${apiKey}&units=metric`;
+  function search(city) {
+    let apiKey = "cc19da36ddd36220c1e743c979d7284e";
+    let city = London;
+    let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?q=${city}&appid=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(displayTemperature);
+  }
 
-  axios.get(apiUrl).then(displayTemperature);
-}
+  function handleSubmit(event) {
+    event.preventdefault();
+    let cityInputElement = document.querySelector("#city-input");
+    search(cityInputElement.value);
+  }
+
+  function displayFahrenheitTemperature(event) {
+    event.preventdefault();
+    let fahrenheitTemperature = (celciusTemperature * 9) / 5 + 32;
+    celciusLink.classList.remove("active");
+    fahrenheitLink.classList.add("active");
+    let temperatureElement = document.querySelector("temperature");
+    temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
+  }
+
+  function displayCelciusTemperature(event) {
+    event.preventdefault();
+    celciusLink.classList.add("active");
+    fahrenheitLink.classList.remove("active");
+    let temperatureElement = document.querySelector("temperature");
+    temperatureElement.innerHTML = Math.round(celciusTemperature);
+  }
+
+  
+let celciusTemperature = null;
+
+let form = document.querySelector("#search-form");
+form.addEventlistener("Submit", handleSubmit);
+
+let fahrenheitLink = document.querySelector("fahrenheit-link");
+fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
+
+let celciusLink = document.querySelector("celcius-link");
+celciusLink.addEventListener("click", displayCelciusTemperature);
+
+search("New York");
