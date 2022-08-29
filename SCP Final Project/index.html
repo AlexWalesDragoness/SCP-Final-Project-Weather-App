@@ -41,18 +41,13 @@
           <div class="overview">
             <h1 id="city"></h1>
             <ul>
-              <li>Last updated at: <span id="date"></span></li>
               <li id="description"></li>
             </ul>
           </div>
           <div class="row">
             <div class="col-6">
               <div class="d-flex weather-temperature">
-                <img
-                  src="https://ssl.gstatic.com/onebox/weather/64/sunny.png"
-                  alt="Clear"
-                  id="icon"
-                />
+                <img src="" alt="Clear" id="icon" />
                 <div>
                   <strong id="temperature"></strong
                   ><span class="units"
@@ -67,23 +62,29 @@
               <ul>
                 <li>Humidity: <span id="humidity"></span>%</li>
                 <li>Wind: <span id="wind"></span>km/h</li>
+                <h6 id="lastupdate">
+                  Last updated at: <span id="date"></span>
+                </h6>
               </ul>
             </div>
           </div>
+          <br />
 
           <div class="weather-forecast" id="forecast"></div>
         </div>
-
-        <small>
-          <a
-            href="https://github.com/AlexWalesDragoness/SCP-Final-Project-Weather-App"
-            target="_blank"
-            >Open-source code</a
-          >
-          by Alexandra Marchant
-        </small>
       </div>
     </div>
+
+    <small>
+      <a
+        id="osc"
+        href="https://github.com/AlexWalesDragoness/SCP-Final-Project-Weather-App"
+        target="_blank"
+        >Open-source code</a
+      >
+      by Alexandra Marchant
+    </small>
+
     <script src="src/app.js"></script>
   </body>
 </html>
